@@ -143,24 +143,46 @@
         }
 
         /* About Section */
+        #about {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Add a gradient background */
+            padding: 80px 20px; /* Adjust padding for better spacing */
+        }
+
+        #about h2 {
+            font-size: 2.5rem; /* Increase heading size */
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
             align-items: center;
         }
 
         .about-image {
-            position: relative;
-            display: inline-block;
-            width: 300px;
-            height: 300px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #0984e3, #6c5ce7);
-            padding: 5px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            background: linear-gradient(135deg, #0984e3, #6c5ce7); /* Gradient border */
+            padding: 5px; /* Space for the gradient border */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: float 3s ease-in-out infinite; /* Add floating animation */
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0); /* Start and end at the original position */
+            }
+            50% {
+                transform: translateY(-10px); /* Move up slightly at the midpoint */
+            }
         }
 
         .about-image img {
@@ -172,38 +194,45 @@
         }
 
         .about-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05) rotate(2deg); /* Slight scaling and rotation on hover */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
         }
 
         .about-image:hover img {
-            transform: scale(1.1);
+            transform: scale(1.1); /* Slight zoom effect on the image */
         }
 
-        /* About Image Modern Design */
-        .about-image img {
-            border: 8px solid var(--card-bg);
-            border-radius: 50%;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .about-text {
+            background: var(--card-bg); /* Card-like design */
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
         }
 
-        .about-image img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
         }
 
-        /* About Image Animation */
-        .about-image img {
-            animation: float 3s ease-in-out infinite;
+        .about-text strong {
+            color: var(--accent-color);
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
+        .about-text .btn {
+            margin-top: 1.5rem;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr; /* Stack image and text vertically */
+                text-align: center;
             }
-            50% {
-                transform: translateY(-10px);
+
+            .about-image {
+                order: -1; /* Move the image above the text */
             }
         }
 
@@ -346,14 +375,6 @@
             .about-grid, .contact-container { grid-template-columns: 1fr; }
             .nav-links { display: none; } /* Simplified for demo - add hamburger for production */
             .section-padding { padding: 60px 0; }
-            .about-grid {
-                grid-template-columns: 1fr; /* Stack image and text vertically */
-                text-align: center; /* Center-align text for better appearance */
-            }
-
-            .about-image {
-                margin: 0 auto 2rem; /* Add spacing below the image */
-            }
         }
     </style>
 </head>
@@ -380,24 +401,24 @@
         </div>
     </section>
 
-    <section id="about" class="section-padding" style="background-color: #f8f9fa;">
+    <section id="about">
         <div class="container reveal">
-            <h2 style="text-align: center; margin-bottom: 3rem; color: var(--primary-color);">About Me</h2>
-            <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
-                <div class="about-image" style="margin: 0 auto;">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-image">
                     <img src="03c5819e-ae9c-4e7b-bb5a-1d237dbc5b91.jpg" alt="Ahmed Lashin">
                 </div>
-                <div class="about-text" style="line-height: 1.8;">
-                    <p style="font-size: 1.2rem; color: var(--text-main);">
+                <div class="about-text">
+                    <p>
                         I am a <strong>Flutter Mobile Developer</strong> with hands-on experience designing, building, and integrating full-stack mobile applications across fitness, social media, e-commerce, and tracking platforms.
                     </p>
-                    <p style="margin-top: 1rem; font-size: 1rem; color: var(--text-light);">
+                    <p>
                         Skilled in <strong>Flutter (Dart)</strong>, REST API integration, Appwrite backend services, and SQL/MongoDB databases. I excel at translating real-world requirements into clean, scalable, and high-performance mobile solutions with a focus on user experience, maintainable architecture, and practical problem-solving.
                     </p>
-                    <p style="margin-top: 1rem; font-size: 1rem; color: var(--text-light);">
+                    <p>
                         My approach combines technical rigor with a keen eye for UI/UX design, ensuring every app I build feels as good as it performs.
                     </p>
-                    <a href="#contact" class="btn" style="margin-top: 1.5rem;">Contact Me</a>
+                    <a href="#contact" class="btn">Contact Me</a>
                 </div>
             </div>
         </div>
